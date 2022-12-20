@@ -39,13 +39,15 @@ const BookDetail = ({ bookId }: { bookId: string | undefined }) => {
     <div className="py-10">
       <div className="book-detail px-10">
         <div className="w-full mx-auto bg-white p-7 rounded-2xl flex flex-col">
-          <div className="flex">
-            <img src={`${baseUrl}/${book.image}`} alt="book cover" className="h-64 rounded-lg" />
-            <div className="ml-6">
+          <div className="flex justify-between">
+            <div>
               <p className="book-detail-title text-2xl text-faded-red mb-3">
                 {book.title}
               </p>
               <BookDetailList book={book}/>
+            </div>
+            <div className="h-64 w-48">
+              <img src={`${baseUrl}/${book.image}`} alt="book cover" className="h-64 rounded-lg" />
             </div>
           </div>
           <div className="book-detail-description mt-4">
