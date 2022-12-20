@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply h-screen bg-creamy-white text-dune;
+  }
+  .book-detail-item {
+    @apply flex items-center py-2 mr-3 last:mr-0;
+  }
+  .book-detail-text {
+    @apply text-sm text-stone-400;
+  }
+  .book-detail-content {
+    @apply text-base text-dune mx-2 last:mr-0;
+  }
+  .header__list {
+    @apply absolute w-28 p-2.5 z-50 top-16 bg-white drop-shadow-lg rounded-lg;
+  }
+  .header__list-item {
+    @apply py-1 px-2.5 rounded-md hover:bg-stone-100;
+  }
+  .mask {
+    @apply fixed top-0 right-0 left-0 z-50 min-h-full min-w-full bg-stone-500 opacity-40;
+  }
+  .popupmodel {
+    @apply  fixed top-0 right-0 left-0 z-50 min-h-full min-w-full flex justify-center items-center px-10;
+  }
+  .popupmodel__container {
+    @apply bg-white p-10 rounded-2xl w-full md:w-4/5 lg:w-3/5 xl:w-2/4 h-auto;
+  }
+  .popupmodel__title {
+    @apply text-xl text-dune mb-2 font-semibold;
+  }
+  .text-input {
+    @apply outline-faded-red p-2 my-2 border rounded-md;
+  }
+  .cancel-btn {
+    @apply  h-12 px-4 ml-6 rounded-lg text-gray-500 bg-white border border-gray-200 hover:bg-gray-100;
+  }
+  .confirm-btn {
+    @apply h-12 px-4 rounded-lg bg-faded-red text-white;
+  }
+  .dashboard-box {
+    @apply bg-white h-20 flex items-center justify-center cursor-pointer rounded-2xl;
+  }
+  .pagination-previous {
+    @apply cursor-default py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-stone-100 hover:text-gray-700;
+  }
+  .pagination-page {
+    @apply  cursor-default py-2 px-3 leading-tight bg-white border border-gray-300 hover:bg-stone-100 hover:text-gray-700;
+  }
+  .pagination-next {
+    @apply cursor-default py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-stone-100 hover:text-gray-700;
+  }
+  .book-model {
+    @apply bg-white p-6 h-[calc(100vh-10rem)] w-[calc(100vw-16rem)] flex flex-col overflow-y-scroll;
+  }
+  .book-model__label {
+    @apply text-dune;
+  }
+  .book-model .text-input {
+    @apply h-10;
+  }
+  .book-model__wrapper {
+    @apply  flex flex-wrap pt-1 pb-2;
+  }
+  .book-model__item {
+    @apply flex-1 flex flex-col items-stretch;
+  }
+  .book-model__error, .input-error {
+    @apply text-red-500 text-sm py-1;
+  }
+  .book-model .react-datepicker__input-container {
+    @apply outline-faded-red p-2 my-2 border rounded-md;
+  }
+  .book-model .react-datepicker__input-container input[type="text"] {
+    @apply w-full outline-none;
+  }
+  .category-item {
+    @apply px-3 py-2 rounded-lg inline-flex break-normal cursor-pointer text-stone-500 transition;
+  }
+  .category-item.active {
+    @apply bg-faded-red text-white;
+  }
+}
