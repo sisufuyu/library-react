@@ -23,7 +23,7 @@ const AuthorTable = () => {
   // control show delete author model
   const [show, setShow] = useState(false)
   const [author, setAuthor] = useState<Author>({_id: '', fullName: '', biography: ''})
-  const [error, setError] = useState('')
+  const [error] = useState('')
   
   const rowsPerPage = 5
   const sliceList = sliceData(authors, page, rowsPerPage)

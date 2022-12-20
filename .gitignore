@@ -14,6 +14,7 @@ results
 tmp
 
 # Build
+build
 public/css/main.css
 
 # Coverage reports
@@ -21,6 +22,8 @@ coverage
 
 # API keys and secrets
 .env
+.env.production
+.env.development
 
 # Dependency directory
 node_modules
