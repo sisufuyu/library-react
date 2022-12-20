@@ -51,7 +51,6 @@ const LoginForm = () => {
   const navigate = useNavigate()
 
   const handleSuccess = async (credentialResponse: CredentialResponse) => {
-    console.log(credentialResponse.credential)
     const res = await axios.post(process.env.REACT_APP_SERVER_URL + '/api/v1/login', {}, {
       headers: {
         'id_token': credentialResponse.credential as string
@@ -63,7 +62,6 @@ const LoginForm = () => {
     localStorage.setItem('library-access-token', token)
 
     const decoded = jwt_decode(token) as Decoded
-    console.log('set login ', decoded)
 
     if(decoded.user) {
       dispatch(setToken(token))
