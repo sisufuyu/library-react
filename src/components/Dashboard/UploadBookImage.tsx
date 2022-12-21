@@ -12,7 +12,7 @@ const UploadBookImage = ({ open, setOpen, book }: BookModelProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
  
   useEffect(() => {
-    const baseUrl = 'http://localhost:4000'
+    const baseUrl = process.env.REACT_APP_SERVER_URL
     const url = book?.image ? `${baseUrl}/${book.image}` : '/images/open-book.png'
     setUrl(url)
   }, [book])
