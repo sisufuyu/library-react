@@ -8,7 +8,7 @@ const ProtectedRoute = ({ permission }: { permission: string[] }) => {
 
   //validate user login and have permission
   const userValid = loginStatus && permission.includes(role)
-  console.log(` permission ${permission}, role ${role}, login ${loginStatus}`)
+  // console.log(` permission ${permission}, role ${role}, login ${loginStatus}`)
 
   const navigate = useNavigate()
   

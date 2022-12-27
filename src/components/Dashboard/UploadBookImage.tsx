@@ -10,11 +10,13 @@ const UploadBookImage = ({ open, setOpen, book }: BookModelProps) => {
   const [url, setUrl] = useState<string>('/images/open-book.png')
   const dispatch = useAppDispatch()
   const inputRef = useRef<HTMLInputElement>(null)
- 
+
   useEffect(() => {
+    setUrl('/images/open-book.png')
     const baseUrl = process.env.REACT_APP_SERVER_URL
-    const url = book?.image ? `${baseUrl}/${book.image}` : '/images/open-book.png'
-    setUrl(url)
+    if(book?.image) {
+      setUrl(`${baseUrl}/${book.image}`)
+    }
   }, [book])
 
   const handleDragOver = (event: React.DragEvent) => {

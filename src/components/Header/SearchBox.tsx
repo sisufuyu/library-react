@@ -26,7 +26,7 @@ const SearchBox = () => {
 
   return (
     <div className="search mx-10 rounded-lg h-12 flex-1 flex bg-white">
-      <div className="search-categories w-40 p-2.5 cursor-pointer relative">
+      <div className="search-categories w-28 p-2.5 cursor-pointer relative">
         <button className="px-2.5 w-full flex justify-between items-center rounded-md" onClick={handleClick}>
           <span className="search-categories__text">{searchType}</span>
           <svg 

@@ -8,6 +8,7 @@ import Main from 'components/Main'
 const Search = () => {
   const dispatch = useAppDispatch()
   const [searchParams] = useSearchParams()
+
   const field =  searchParams.get('search-field')
   const keyword = searchParams.get('keyword')
 

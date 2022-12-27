@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 
 import { useAppSelector } from 'redux/hooks'
 import { concatAuthors } from 'utils/helper'
+import Loading from './Loading'
+import NoResult from 'components/NoResult'
 
 const Main = () => {
   let bookList = useAppSelector((state) => state.books.refList)
+  const {loading} = useAppSelector(state => state.books)
 
   const [showAvailable, setShowAvailable ] = useState(false)
 
@@ -14,8 +17,8 @@ const Main = () => {
     setShowAvailable(target.checked)
   }
 
-  if (!bookList) {
-    return <div>Can't find books</div>
+  if (!loading && bookList.length === 0) {
+    return <NoResult />
   }
 
   const baseUrl = process.env.REACT_APP_SERVER_URL
@@ -32,6 +35,8 @@ const Main = () => {
             className="ml-2 h-5 w-5 outline-none border-hidden accent-red-400"
           />
         </section>
+        {loading ?
+          <Loading /> :
         <section>
           <ul className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 gap-x-4 gap-y-6">
             {bookList.map((book) => {
@@ -39,7 +44,7 @@ const Main = () => {
                 return (
                   <li key={book._id}>
                     <Link to={`/books/${book._id}`} className="flex justify-center item-center">
-                    <div className="h-64 w-40 cursor-pointer drop-shadow-">
+                    <div className="h-64 w-40 rounded-lg cursor-pointer shadow-lg">
                       <img 
                         src={`${baseUrl}/${book.image}`} 
                         alt="book cover" 
@@ -57,6 +62,7 @@ const Main = () => {
             })}
           </ul>
         </section>
+        }
       </div>
     </main>
   )

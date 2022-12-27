@@ -27,7 +27,7 @@ export interface BookState {
   searchType: string,
   searchKeyword: string,
   error: string,
-  loading: false,
+  loading: boolean,
   message: string
 }
 
@@ -83,7 +83,7 @@ export const fetchBookByIdThunk = createAsyncThunk(
 export const borrowBookThunk = createAsyncThunk(
   'books/borrowBook',
   async ({ bookId, borrowerID, borrowDate, returnDate}: BookBorrowProps & { bookId: string }, { rejectWithValue }) => {
-    console.log('borrow book thunk')
+    // console.log('borrow book thunk')
     try {
       const res = await borrowBook(bookId, { borrowerID, borrowDate, returnDate })
       return res.data
@@ -96,7 +96,7 @@ export const borrowBookThunk = createAsyncThunk(
 export const returnBookThunk = createAsyncThunk(
   'books/returnBook',
   async (bookId: string, { rejectWithValue }) => {
-    console.log('return book thunk')
+    // console.log('return book thunk')
     try {
       const res = await returnBook(bookId)
       return res.data
@@ -202,15 +202,6 @@ export const booksSlice = createSlice({
 
       state.refList = list
     },
-    filterBooksByStatus: (state, action: PayloadAction<boolean>) => {
-      let list = [...state.refList]
-
-      if (action.payload) {
-        list = state.refList.filter(book => book.status)
-      }
-
-      state.refList = [...list]
-    },
     clearBookMessage: (state) => {
       state.message = ''
     },
@@ -223,13 +214,18 @@ export const booksSlice = createSlice({
       .addCase(fetchBooksThunk.pending, (state) => {
         state.error = ''
         state.message = ''
+        state.loading = true
+        state.bookList = []
+        state.refList = []
       })
       .addCase(fetchBooksThunk.fulfilled, (state, action: PayloadAction<Book[]>) => {
         state.bookList = action.payload 
         state.refList = action.payload
+        state.loading = false
       })
       .addCase(fetchBooksThunk.rejected, (state) => {
         state.error = 'Fetch books failed!'
+        state.loading = false
       })
       .addCase(fetchBookByIdThunk.pending, (state) => {
         state.error = ''
@@ -380,9 +376,13 @@ export const booksSlice = createSlice({
           }
         } else state.error = 'Upload book image failed!'
       })
+      .addCase(searchBooksThunk.pending, (state, action) => {
+        state.loading = true
+      })
       .addCase(searchBooksThunk.fulfilled, (state, action) => {
         const books = action.payload
 
+        state.loading = false
         state.refList = books
       })
   },
@@ -392,7 +392,6 @@ export const {
   setSearchKeyword, 
   setSearchType, 
   filterBooksByGenre, 
-  filterBooksByStatus,
   clearBookMessage,
   clearBookError,
 } = booksSlice.actions
