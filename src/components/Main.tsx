@@ -48,7 +48,7 @@ const Main = () => {
                       <img 
                         src={`${baseUrl}/${book.image}`} 
                         alt="book cover" 
-                        className="w-full h-full block rounded-lg" 
+                        className="w-full h-full block rounded-lg object-cover" 
                       />
                     </div>
                     </Link>
