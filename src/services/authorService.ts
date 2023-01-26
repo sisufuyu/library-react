@@ -1,7 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { AuthorWithoutId, Author } from 'type'
+import { REACT_APP_SERVER_URL } from '../utils/helper'
 
-const baseUrl = process.env.REACT_APP_SERVER_URL + '/api/v1/authors'
+const baseUrl = REACT_APP_SERVER_URL + '/api/v1/authors'
 
 const instance = axios.create({
   baseURL: baseUrl

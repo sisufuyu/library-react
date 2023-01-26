@@ -6,6 +6,7 @@ import { fetchBookByIdThunk } from 'redux/slices/booksSlice'
 import NotFound from 'components/NotFound'
 import BookDetailList from './BookDetailList'
 import BorrowBookModel from './BorrowBookModel'
+import { REACT_APP_SERVER_URL } from '../../utils/helper'
 
 const BookDetail = ({ bookId }: { bookId: string | undefined }) => {
   const dispatch = useAppDispatch()
@@ -33,7 +34,7 @@ const BookDetail = ({ bookId }: { bookId: string | undefined }) => {
     return <NotFound />
   }
 
-  const baseUrl = process.env.REACT_APP_SERVER_URL
+  const baseUrl = REACT_APP_SERVER_URL
 
   return (
     <div className="py-10">

@@ -4,6 +4,7 @@ import PopUpModel from "components/Common/PopUpModel"
 import {BookModelProps} from 'type'
 import { uploadBookImageThunk } from 'redux/slices/booksSlice'
 import { useAppDispatch } from 'redux/hooks'
+import { REACT_APP_SERVER_URL } from '../../utils/helper'
 
 const UploadBookImage = ({ open, setOpen, book }: BookModelProps) => {
   const [image, setImage] = useState<File>()
@@ -13,7 +14,7 @@ const UploadBookImage = ({ open, setOpen, book }: BookModelProps) => {
 
   useEffect(() => {
     setUrl('/images/open-book.png')
-    const baseUrl = process.env.REACT_APP_SERVER_URL
+    const baseUrl = REACT_APP_SERVER_URL
     if(book?.image) {
       setUrl(`${baseUrl}/${book.image}`)
     }

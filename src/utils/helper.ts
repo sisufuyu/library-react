@@ -70,3 +70,5 @@ export function sliceData<T>(data: T[], page: number, rowsPerPage: number) {
   const end = Math.min(page * rowsPerPage, data.length)
   return data.slice(start, end)
 }
+
+export const REACT_APP_SERVER_URL= 'https://library-rest-api.onrender.com'

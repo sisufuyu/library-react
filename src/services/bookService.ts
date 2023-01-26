@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { BookUpdateProps, BookBorrowProps } from 'type'
 
-const baseUrl = process.env.REACT_APP_SERVER_URL + '/api/v1/books'
+import { BookUpdateProps, BookBorrowProps } from 'type'
+import { REACT_APP_SERVER_URL } from '../utils/helper'
+
+const baseUrl = REACT_APP_SERVER_URL + '/api/v1/books'
 
 const instance = axios.create({
   baseURL: baseUrl
