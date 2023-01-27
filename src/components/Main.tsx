@@ -5,6 +5,7 @@ import { useAppSelector } from 'redux/hooks'
 import { concatAuthors } from 'utils/helper'
 import Loading from './Loading'
 import NoResult from 'components/NoResult'
+import { REACT_APP_SERVER_URL } from '../utils/helper'
 
 const Main = () => {
   let bookList = useAppSelector((state) => state.books.refList)
@@ -21,7 +22,7 @@ const Main = () => {
     return <NoResult />
   }
 
-  const baseUrl = process.env.REACT_APP_SERVER_URL
+  const baseUrl = REACT_APP_SERVER_URL
 
   return (
     <main>

@@ -41,6 +41,7 @@ import { useAppDispatch } from 'redux/hooks'
 import { setUserInfo, setLoginStatus, setToken } from '../redux/slices/userSlice'
 import { Decoded } from 'type'
 import HomeIcon from './Common/HomeIcon'
+import { REACT_APP_SERVER_URL } from '../utils/helper'
 
 interface CredentialResponse {
   credential?: string
@@ -51,7 +52,7 @@ const LoginForm = () => {
   const navigate = useNavigate()
 
   const handleSuccess = async (credentialResponse: CredentialResponse) => {
-    const res = await axios.post(process.env.REACT_APP_SERVER_URL + '/api/v1/login', {}, {
+    const res = await axios.post(REACT_APP_SERVER_URL + '/api/v1/login', {}, {
       headers: {
         'id_token': credentialResponse.credential as string
       }

@@ -39,7 +39,7 @@ const UserBookShelf = () => {
                 </button>
               </li>
             )}
-          </ul> : 
+          </ul> :
           <div className="flex justify-center opacity-30">
             <img src="/images/bookshelves.png" className="max-h-80" alt="bookshelf"/>
           </div>

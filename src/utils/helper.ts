@@ -71,4 +71,4 @@ export function sliceData<T>(data: T[], page: number, rowsPerPage: number) {
   return data.slice(start, end)
 }
 
-export const REACT_APP_SERVER_URL= 'https://library-rest-api.onrender.com'
+export const REACT_APP_SERVER_URL= 'https://yu-library-rest-api.up.railway.app'
