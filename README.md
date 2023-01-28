@@ -1,6 +1,9 @@
 # Library Management System
 
-This is a library management system fullstack project (front-end part) I made in Integrify fullstack program. In this front-end part, I used Typescript with React framework and Redux for state managent and Tailwind CSS. From this project I learned how to authorize via Google. You could check this project from https://yu-library.netlify.app/
+This is a library management system fullstack project (front-end part) I made in Integrify fullstack program. In this front-end part, I used Typescript with React framework and Redux for state managent and Tailwind CSS. From this project I learned how to authorize via Google. You could check this project from https://yu-library.netlify.app/. Or pull it from Docker Hub and try it locally:
+```
+docker image pull sisufuyu/library-react-app
+```
 
 ## Features
 * View all the books in the library, and click to check detail
