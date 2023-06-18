@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from 'redux/hooks'
 import { setSearchType, setSearchKeyword } from 'redux/slices/booksSlice'
@@ -10,6 +10,7 @@ const SearchBox = () => {
   const dispatch = useAppDispatch()
   const { searchKeyword, searchType } = useAppSelector(state => state.books)
   const [show, setShow] = useState(false)
+  const navigate = useNavigate()
 
   const handleClick = () => setShow(!show)
 
@@ -22,6 +23,16 @@ const SearchBox = () => {
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement
     dispatch(setSearchKeyword(target.value))
+  }
+
+  const handleSearchClick = () => {
+    navigate(`/search?search-field=${searchType}&keyword=${searchKeyword}`)
+  }
+
+  const handleEnterKey = (event:React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.nativeEvent.code === 'Enter') {
+      handleSearchClick()
+    }
   }
 
   return (
@@ -53,9 +64,12 @@ const SearchBox = () => {
           className="search-box__input flex-1 h-full border-0 outline-0"
           value={searchKeyword}
           onChange={handleChange}
+          onKeyDown={handleEnterKey}
         />
-        <Link to={`/search?search-field=${searchType}&keyword=${searchKeyword}`}>
-        <button className="search-box__button hover:bg-amber-300 active:bg-amber-300 rounded-sm">
+        <button 
+          className="search-box__button hover:bg-amber-300 active:bg-amber-300 rounded-sm"
+          onClick={handleSearchClick}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -65,13 +79,12 @@ const SearchBox = () => {
             className="w-6 h-6 p-0.5 hover:stroke-white"
           >
             <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
           </svg>
         </button>
-        </Link>
       </div>
     </div>
   )

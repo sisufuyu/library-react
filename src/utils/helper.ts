@@ -72,3 +72,4 @@ export function sliceData<T>(data: T[], page: number, rowsPerPage: number) {
 }
 
 export const REACT_APP_SERVER_URL= 'https://yu-library-rest-api.up.railway.app'
+// export const REACT_APP_SERVER_URL= 'http://localhost:4000'
